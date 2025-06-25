@@ -8,14 +8,12 @@ app.use(cookieParser());
 
 const PORT = process.env.PORT || 5000;
 
-app.use(express.json());
-
-
-
-app.use(cors({
-  origin: 'https://ai-word-doc.vercel.app'
-  , credentials: true,
+app.options('*', cors({
+  origin: 'https://ai-word-doc.vercel.app',
+  credentials: true,
 }));
+
+app.use(express.json());
 
 app.use('/api', Router);
 
