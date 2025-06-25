@@ -6,6 +6,8 @@ dotenv.config()
 
 const JWT_SECRET = process.env.JWT_SECRET || "sksksk";
 
+
+
 export const checkCredentialsCookie = (req: Request, res: Response, next: NextFunction) => {
 
     const credentials: string = req.cookies.credential;
