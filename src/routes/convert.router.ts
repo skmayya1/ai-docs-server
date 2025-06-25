@@ -7,7 +7,7 @@ import { promisify } from 'util';
 const router = Router();
 const execAsync = promisify(exec);
 
-router.post('', async (req: Request, res: Response): Promise<void> => {
+router.post('/{*any}', async (req: Request, res: Response): Promise<void> => {
   const { compatibleHtml } = req.body;
   
   if (!compatibleHtml) {
