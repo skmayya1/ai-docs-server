@@ -12,7 +12,12 @@ export const checkCredentialsCookie = (req: Request, res: Response, next: NextFu
 
     const credentials: string = req.cookies.credential;
 
-    if (!credentials.trim()) {
+    console.log(req.cookies);
+    
+
+    if (!credentials) {
+        console.log(req);
+        
         res.status(401).json({ error: 'No credentials cookie found' });
         return
     }

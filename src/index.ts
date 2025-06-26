@@ -2,6 +2,9 @@ import express from 'express';
 import Router from './routes'
 import cors from 'cors'
 import cookieParser from 'cookie-parser';
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 const app = express();
 app.use(cookieParser());
@@ -9,8 +12,12 @@ app.use(cookieParser());
 const PORT = process.env.PORT || 5000;
 
 
+const DEVELOPMENT = process.env.DEVELOPMENT
+
+const origin = DEVELOPMENT ? 'http://localhost:3000' : 'https://ai-word-doc.vercel.app'
+
 app.use(cors({
-  origin: 'https://ai-word-doc.vercel.app',
+  origin,
   credentials: true,
 }));
 
