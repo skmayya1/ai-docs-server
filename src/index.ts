@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 5000;
 
 const DEVELOPMENT = process.env.DEVELOPMENT
 
-const origin = DEVELOPMENT ? 'http://localhost:3000' : 'https://ai-word-doc.vercel.app'
+const origin = DEVELOPMENT ? 'http://localhost:3000' : 'https://lexa.skmayya.me'
 
 app.use(cors({
   origin,
