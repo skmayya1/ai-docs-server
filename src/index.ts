@@ -8,18 +8,12 @@ app.use(cookieParser());
 
 const PORT = process.env.PORT || 5000;
 
-// CORS configuration
-const corsOptions = {
+
+app.use(cors({
   origin: 'https://ai-word-doc.vercel.app',
   credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'],
-  exposedHeaders: ['Set-Cookie']
-};
+}));
 
-app.use(cors(corsOptions));
-
-app.options('/{*any}', cors(corsOptions));
 
 app.use(express.json());
 
