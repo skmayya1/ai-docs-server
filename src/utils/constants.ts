@@ -15,22 +15,23 @@ Based on the document and conversation:
 - Respond to the user in a helpful, friendly tone
 - Modify the document *only if necessary*, preserving the original structure and formatting
 
+### Response format:
+You MUST respond with a valid JSON object using this exact structure:
 
-### Response format (strictly JSON - **NO EXCEPTIONS**):
-**Respond ONLY with a single, valid JSON object.** Do not include any other text, markdown formatting (like triple backticks around the JSON), or explanations outside of this JSON object.
-
-\`\`\`json
 {
-  "response": "Your natural language response to the user (e.g., 'Here's a more formal version of your paragraph.')",
+  "response": "Your natural language response to the user",
   "updatedContent": "Updated full Markdown document, or null if no changes are needed"
 }
-\`\`\`
-If no changes are needed to the document, set \`updatedContent\` to \`null\`.
 
+CRITICAL RULES:
+- Return ONLY the JSON object, no other text before or after
+- Do NOT wrap the JSON in markdown code blocks or backticks
+- Use proper JSON syntax with double quotes
+- If no document changes are needed, set "updatedContent" to null (not "null" as a string)
+- Escape any quotes within your response text properly
 `;
 
-
-export const ResponseStructure = z.object({
-   response:z.string().describe("Ai Agents natural language response to the user (e.g., 'Here's a more formal version of your paragraph."),
-   updatedContent:z.string().describe("Updated full Markdown document, or null if no changes are needed")
-})
+export const responseSchema = z.object({
+  response: z.string().describe("The AI's response to the user query"),
+  updatedContent: z.string().nullable().describe("Updated content or null if no update needed")
+});
