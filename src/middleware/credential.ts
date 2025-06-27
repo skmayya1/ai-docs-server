@@ -15,9 +15,7 @@ export const checkCredentialsCookie = (req: Request, res: Response, next: NextFu
     console.log(req.cookies);
     
 
-    if (!credentials) {
-        console.log(req);
-        
+    if (!credentials) {        
         res.status(401).json({ error: 'No credentials cookie found' });
         return
     }
